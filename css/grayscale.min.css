@@ -108,6 +108,7 @@ a:focus,a:hover{
   padding:200px 0;
   text-align:center;
   color:#fff;
+  background:url(../img/CoverBG.jpg) no-repeat center center scroll;
   background-color:#ff6363;
   -webkit-background-size:cover;
   -moz-background-size:cover;
@@ -264,7 +265,7 @@ ul.banner-social-buttons{
   }
 }
 footer{
-  padding:50px 0
+  padding:20px 0
 }
 footer p{
   font-size:14px;
