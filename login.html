@@ -1,62 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A rideshare web service for college students.">
+    <meta name="author" content="Sai Atmakuri and Tanish Ambulkar">
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>LoginForm</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom fonts for this template -->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-  <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
-
-  <!-- Custom styles for this template -->
-  <link href="css/grayscale.min.css" rel="stylesheet">
-  <link href="css/loginForm.css" rel="stylesheet">
-
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-  <script type="text/javascript">
-      var config = {
-          apiKey: "AIzaSyBNaYCjRpVElS6trBdVw_aMoAk8TuKrABc",
-          authDomain: "skrrt-5acd5.firebaseapp.com",
-          databaseURL: "https://skrrt-5acd5.firebaseio.com",
-          projectId: "skrrt-5acd5",
-          storageBucket: "",
-          messagingSenderId: "416128707790"
-      };
-      firebase.initializeApp(config);
-  </script>
-  <script type="text/javascript">
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        // User is signed in.
-        location.replace("dashboard.html");
-      }
+    <title>Coast</title>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template -->
+    <link href="css/grayscale.min.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBNaYCjRpVElS6trBdVw_aMoAk8TuKrABc",
+            authDomain: "skrrt-5acd5.firebaseapp.com",
+            databaseURL: "https://skrrt-5acd5.firebaseio.com",
+            projectId: "skrrt-5acd5",
+            storageBucket: "skrrt-5acd5.appspot.com",
+            messagingSenderId: "416128707790"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script type="text/javascript">
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is signed in.
+          location.replace("dashboard.html");
+        }
       });
-
-  </script>
-
+    </script>
 </head>
-<body>
-  <div class="container">
-    <div class="col-md-12">
-      <form name="login" class="d-flex justify-content-center" id="loginForm">
-        <div class="flex-column">
-          <input type="text" class="form-control" placeholder="Enter Username" name="username" required>
-          <input type="password" class="form-control" placeholder="Enter Password" name="password" required>
-          <button class="btn btn-primary" id="loginButton">Login</button>
-        </div>
-      </form>
 
-    </div>
-  </div>
+<body id="page-top">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+          <a class="navbar-brand js-scroll-trigger" href="#page-top">Coast</a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              Menu
+              <i class="fa fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item" id="menu-item-login">
+                      <a class="nav-link" href="index.html">Home</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+  <!-- Login Section -->
+  <section id="login-section" class="content-section text-center">
+      <div class="container">
+          <div class="col-lg-12 mx-auto">
+              <h1>Log-In</h1>
+              <div id="messageForm">
+                  <form name="login" class="col-md-6 mx-auto" id="loginForm">
+                      <div class="form-group">
+                          <label class="col-form-label col-form-label-lg" for="usernameLabel" style="float: left;">Email: </label>
+                          <input type="email" class="form-control form-control-lg" id="email" placeholder="Email" name="username" required>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-form-label col-form-label-lg" for="passwordLabel" style="float: left;">Password: </label>
+                          <input type="password" class="form-control form-control-lg" id="email" placeholder="Password" name="password" required>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-form-label col-form-label-lg" for="registerlink" style="float: left;">If you don't have an account, sign up <a href="index.html#register">here</a>.</label>
+                      </div>
+                      <button class="hover btn btn-primary btn-lg" id="loginButton">Log-in</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </section>
 
   <script>
       function login(event){

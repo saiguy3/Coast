@@ -2,199 +2,189 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="A rideshare web service for college students.">
-  <meta name="author" content="Sai Atmakuri and Tanish Ambulkar">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A rideshare web service for college students.">
+    <meta name="author" content="Sai Atmakuri and Tanish Ambulkar">
 
-  <title>Coast</title>
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom fonts for this template -->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
-  <!-- Bootstrap Date Picker -->
-  <link href="http://code.gijgo.com/1.5.1/css/gijgo.css" rel="stylesheet" type="text/css" />
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyBNaYCjRpVElS6trBdVw_aMoAk8TuKrABc",
-      authDomain: "skrrt-5acd5.firebaseapp.com",
-      databaseURL: "https://skrrt-5acd5.firebaseio.com",
-      projectId: "skrrt-5acd5",
-      storageBucket: "skrrt-5acd5.appspot.com",
-      messagingSenderId: "416128707790"
-    };
-    firebase.initializeApp(config);
-  </script>
-  <script type="text/javascript">
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        // User is signed in.
-      }
-      else {
-        // No user is signed in.
-        location.replace("login.html");
-      }
-      });
-
-  </script>
+    <title>Coast</title>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <!-- Bootstrap Date Picker -->
+    <link href="http://code.gijgo.com/1.5.1/css/gijgo.css" rel="stylesheet" type="text/css" />
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBNaYCjRpVElS6trBdVw_aMoAk8TuKrABc",
+            authDomain: "skrrt-5acd5.firebaseapp.com",
+            databaseURL: "https://skrrt-5acd5.firebaseio.com",
+            projectId: "skrrt-5acd5",
+            storageBucket: "skrrt-5acd5.appspot.com",
+            messagingSenderId: "416128707790"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script type="text/javascript">
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) { /* User is signed in. */ } else {
+                // No user is signed in.
+                location.replace("login.html");
+            }
+        });
+    </script>
 </head>
 
-<body class="fixed-nav bg-dark" id="page-top">
-  <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="dashboard.html">Coast</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item" title="Home">
-          <a class="nav-link" href="dashboard.html">
-            <i class="fa fa-fw fa-home"></i>
-            <span class="nav-link-text">Home</span>
-          </a>
-        </li>
-        <li class="nav-item" title="Messages">
-          <a class="nav-link" href="messages.html" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-comments"></i>
-            <span class="nav-link-text">Messages</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:firebase.auth().signOut();location.replace('index.html');">
-            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
-        </li>
-      </ul>
+<body class="fixed-nav" id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">Coast</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="dashboard.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="messages.html">Messages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:firebase.auth().signOut();location.replace('index.html');">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" id="cards-holder">
+        <div class="container-fluid">
+            <!-- Find a Ride -->
+            <div class="card mt-3">
+                <div class="card-header">
+                    <i class="fa fa-car"></i> Find a Ride
+                </div>
+                <div class="card-body">
+                    <form class="col-md-12" id="rider-form">
+                        <div class="form-row">
+                            <label class="col-lg-1 col-form-label col-form-label-lg" for="fromLabel">From: </label>
+                            <div class="form-group col-md-7">
+                                <select class="form-control form-control-lg" id="ride-origin" required>
+                                    <option value="">Select School...</option>
+                                    <option value="UCB">UC Berkeley</option>
+                                    <option value="UCD">UC Davis</option>
+                                    <option value="UCI">UC Irvine</option>
+                                    <option value="UCLA">UC Los Angeles</option>
+                                    <option value="UCM">UC Merced</option>
+                                    <option value="UCR">UC Riverside</option>
+                                    <option value="UCSD">UC San Diego</option>
+                                    <option value="UCSB">UC Santa Barbara</option>
+                                    <option value="UCSC">UC Santa Cruz</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <input id="depart-date-ride" class="form-control form-control-lg" placeholder="Depart Date" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="col-lg-1 col-form-label col-form-label-lg" for="toLabel">To: </label>
+                            <div class="form-group col-md-7">
+                                <select class="form-control form-control-lg" id="ride-destination" required>
+                                    <option value="">Select School...</option>
+                                    <option value="UCB">UC Berkeley</option>
+                                    <option value="UCD">UC Davis</option>
+                                    <option value="UCI">UC Irvine</option>
+                                    <option value="UCLA">UC Los Angeles</option>
+                                    <option value="UCM">UC Merced</option>
+                                    <option value="UCR">UC Riverside</option>
+                                    <option value="UCSD">UC San Diego</option>
+                                    <option value="UCSB">UC Santa Barbara</option>
+                                    <option value="UCSC">UC Santa Cruz</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <input id="return-date-ride" class="form-control form-control-lg" placeholder="Return Date">
+                            </div>
+                        </div>
+                        <button type="submit" class="hover btn btn-primary btn-lg" id="ride-submit-button" style="float: right;">Find Ride</button>
+                    </form>
+                </div>
+            </div>
+            <!-- Become a Driver -->
+            <div class="card my-3">
+                <div class="card-header">
+                    <i class="fa fa-id-card"></i> Become a Driver
+                </div>
+                <div class="card-body">
+                    <form class="col-md-12" id="driver-form">
+                        <div class="form-row">
+                            <label class="col-lg-1 col-form-label col-form-label-lg" for="fromLabel">From: </label>
+                            <div class="form-group col-md-7">
+                                <select class="form-control form-control-lg" id="driver-origin" required>
+                                    <option value="">Select School...</option>
+                                    <option value="UCB">UC Berkeley</option>
+                                    <option value="UCD">UC Davis</option>
+                                    <option value="UCI">UC Irvine</option>
+                                    <option value="UCLA">UC Los Angeles</option>
+                                    <option value="UCM">UC Merced</option>
+                                    <option value="UCR">UC Riverside</option>
+                                    <option value="UCSD">UC San Diego</option>
+                                    <option value="UCSB">UC Santa Barbara</option>
+                                    <option value="UCSC">UC Santa Cruz</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <input id="depart-date-driver" class="form-control form-control-lg" placeholder="Depart Date" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="col-lg-1 col-form-label col-form-label-lg" for="toLabel">To: </label>
+                            <div class="form-group col-md-7">
+                                <select class="form-control form-control-lg" id="driver-destination" required>
+                                    <option value="">Select School...</option>
+                                    <option value="UCB">UC Berkeley</option>
+                                    <option value="UCD">UC Davis</option>
+                                    <option value="UCI">UC Irvine</option>
+                                    <option value="UCLA">UC Los Angeles</option>
+                                    <option value="UCM">UC Merced</option>
+                                    <option value="UCR">UC Riverside</option>
+                                    <option value="UCSD">UC San Diego</option>
+                                    <option value="UCSB">UC Santa Barbara</option>
+                                    <option value="UCSC">UC Santa Cruz</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <input id="return-date-driver" class="form-control form-control-lg" placeholder="Return Date">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <input type="number" class="form-control form-control-lg" id="price" placeholder="Price" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="number" class="form-control form-control-lg" id="numSpots" placeholder="# Spots" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-10">
+                                <input type="text" class="form-control form-control-lg" id="comments" placeholder="Any comments for riders...">
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="hover btn btn-primary btn-lg" id="driver-submit-button" style="text-align: right;">Become Driver</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-  </nav>
-
-  <div class="container">
-    <div class="container-fluid">
-      <!-- Find a Ride -->
-      <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-car"></i> Find a Ride
-        </div>
-        <div class="card-body">
-          <form class="col-md-12" id="rider-form">
-            <div class="form-row">
-              <label class="col-lg-1 col-form-label col-form-label-lg" for="fromLabel">From: </label>
-              <div class="form-group col-md-7">
-                <select class="form-control form-control-lg" id="ride-origin" required>
-                  <option value="">Select School...</option>
-                  <option value="UCB">UC Berkeley</option>
-                  <option value="UCD">UC Davis</option>
-                  <option value="UCI">UC Irvine</option>
-                  <option value="UCLA">UC Los Angeles</option>
-                  <option value="UCM">UC Merced</option>
-                  <option value="UCR">UC Riverside</option>
-                  <option value="UCSD">UC San Diego</option>
-                  <option value="UCSB">UC Santa Barbara</option>
-                  <option value="UCSC">UC Santa Cruz</option>
-                </select>
-              </div>
-              <div class="form-group col-md-4">
-                  <input id="depart-date-ride" class="form-control form-control-lg" placeholder="Depart Date" required>
-              </div>
-            </div>
-            <div class="form-row">
-              <label class="col-lg-1 col-form-label col-form-label-lg" for="toLabel">To: </label>
-              <div class="form-group col-md-7">
-                <select class="form-control form-control-lg" id="ride-destination" required>
-                  <option value="">Select School...</option>
-                  <option value="UCB">UC Berkeley</option>
-                  <option value="UCD">UC Davis</option>
-                  <option value="UCI">UC Irvine</option>
-                  <option value="UCLA">UC Los Angeles</option>
-                  <option value="UCM">UC Merced</option>
-                  <option value="UCR">UC Riverside</option>
-                  <option value="UCSD">UC San Diego</option>
-                  <option value="UCSB">UC Santa Barbara</option>
-                  <option value="UCSC">UC Santa Cruz</option>
-                </select>
-              </div>
-              <div class="form-group col-md-4">
-                  <input id="return-date-ride" class="form-control form-control-lg" placeholder="Return Date" >
-              </div>
-            </div>
-            <button type="submit" class="hover btn btn-primary btn-lg" id="ride-submit-button" style="float: right;">Find Ride</button>
-          </form>
-        </div>
-      </div>
-      <!-- Become a Driver -->
-      <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-id-card"></i> Become a Driver
-        </div>
-        <div class="card-body">
-          <form class="col-md-12" id="driver-form">
-            <div class="form-row">
-              <label class="col-lg-1 col-form-label col-form-label-lg" for="fromLabel">From: </label>
-              <div class="form-group col-md-7">
-                <select class="form-control form-control-lg" id="driver-origin" required>
-                  <option value="">Select School...</option>
-                  <option value="UCB">UC Berkeley</option>
-                  <option value="UCD">UC Davis</option>
-                  <option value="UCI">UC Irvine</option>
-                  <option value="UCLA">UC Los Angeles</option>
-                  <option value="UCM">UC Merced</option>
-                  <option value="UCR">UC Riverside</option>
-                  <option value="UCSD">UC San Diego</option>
-                  <option value="UCSB">UC Santa Barbara</option>
-                  <option value="UCSC">UC Santa Cruz</option>
-                </select>
-              </div>
-              <div class="form-group col-md-4">
-                  <input id="depart-date-driver" class="form-control form-control-lg" placeholder="Depart Date" required>
-              </div>
-            </div>
-            <div class="form-row">
-              <label class="col-lg-1 col-form-label col-form-label-lg" for="toLabel">To: </label>
-              <div class="form-group col-md-7">
-                <select class="form-control form-control-lg" id="driver-destination" required>
-                  <option value="">Select School...</option>
-                  <option value="UCB">UC Berkeley</option>
-                  <option value="UCD">UC Davis</option>
-                  <option value="UCI">UC Irvine</option>
-                  <option value="UCLA">UC Los Angeles</option>
-                  <option value="UCM">UC Merced</option>
-                  <option value="UCR">UC Riverside</option>
-                  <option value="UCSD">UC San Diego</option>
-                  <option value="UCSB">UC Santa Barbara</option>
-                  <option value="UCSC">UC Santa Cruz</option>
-                </select>
-              </div>
-              <div class="form-group col-md-4">
-                  <input id="return-date-driver" class="form-control form-control-lg" placeholder="Return Date" >
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                  <input type="number" class="form-control form-control-lg" id="price" placeholder="Price" required>
-              </div>
-              <div class="form-group col-md-6">
-                  <input type="number" class="form-control form-control-lg" id="numSpots" placeholder="# Spots" required>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-10">
-                  <input type="text" class="form-control form-control-lg" id="comments" placeholder="Any comments for riders..." >
-              </div>
-              <div class="col-md-2">
-                <button type="submit" class="hover btn btn-primary btn-lg" id="driver-submit-button" style="float: right;">Become a Driver</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    <!-- /.container-fluid-->
-    <!-- /.content-wrapper-->
-
     <!-- Bootstrap Date Picker -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="http://code.gijgo.com/1.5.1/js/gijgo.js" type="text/javascript"></script>
@@ -227,53 +217,57 @@
     <script src="js/sb-admin.min.js"></script>
 
     <script type="text/javascript">
-      function createRide(event){
-        console.log("inside createRide");
-        const origin = document.getElementById('driver-origin').value;
-        const destination = document.getElementById('driver-destination').value;
-        const departDate = document.getElementById('depart-date-driver').value;
-        const returnDate = document.getElementById('return-date-driver').value;
-        const price = document.getElementById('price').value;
-        const numSpots = document.getElementById('numSpots').value;
-        const comments = document.getElementById('comments').value;
+        function createRide(event) {
+            console.log("inside createRide");
+            const origin = document.getElementById('driver-origin').value;
+            const destination = document.getElementById('driver-destination').value;
+            const departDate = document.getElementById('depart-date-driver').value;
+            const returnDate = document.getElementById('return-date-driver').value;
+            const price = document.getElementById('price').value;
+            const numSpots = document.getElementById('numSpots').value;
+            const comments = document.getElementById('comments').value;
 
-        const currentUser = firebase.auth().currentUser.uid;
-        console.log(currentUser);
-        firebase.database().ref(`/rides/${currentUser}`)
-          .set({currentUser,origin,destination,departDate,returnDate,price,numSpots,comments},()=>alert('Your ride has been posted'));
-        document.getElementById('driver-origin').value = null;
-        document.getElementById('driver-destination').value = null;
-        document.getElementById('depart-date-driver').value = null;
-        document.getElementById('return-date-driver').value = null;
-        document.getElementById('price').value = null;
-        document.getElementById('numSpots').value = null;
-        document.getElementById('comments').value = null;
+            const currentUser = firebase.auth().currentUser.uid;
+            console.log(currentUser);
+            firebase.database().ref(`/rides/${currentUser}`)
+                .set({
+                    currentUser, origin, destination, departDate, returnDate, price, numSpots, comments
+                }, () => alert('Your ride has been posted'));
+            document.getElementById('driver-origin').value = null;
+            document.getElementById('driver-destination').value = null;
+            document.getElementById('depart-date-driver').value = null;
+            document.getElementById('return-date-driver').value = null;
+            document.getElementById('price').value = null;
+            document.getElementById('numSpots').value = null;
+            document.getElementById('comments').value = null;
 
-        event.preventDefault();
-      }
-      function searchRide(event){
-        console.log("inside searchRide");
-        const origin = document.getElementById('ride-origin').value;
-        const destination = document.getElementById('ride-destination').value;
-        const departDate = document.getElementById('depart-date-ride').value;
-        var returnDate="";
-        if (document.getElementById("return-date-ride").value){
-          returnDate = document.getElementById("return-date-ride");
+            event.preventDefault();
         }
-        const { currentUser } = firebase.auth();
-        firebase.database().ref(`/users/${currentUser.uid}/rideInfo`)
-          .set({origin,destination,departDate,returnDate},() => window.location.href = "rides.html");
 
-        event.preventDefault();
-      }
-      const createRideForm = document.getElementById("driver-form");
-      createRideForm.addEventListener("submit",createRide,true);
-      const searchRideForm = document.getElementById("rider-form");
-      searchRideForm.addEventListener("submit",searchRide,true);
+        function searchRide(event) {
+            console.log("inside searchRide");
+            const origin = document.getElementById('ride-origin').value;
+            const destination = document.getElementById('ride-destination').value;
+            const departDate = document.getElementById('depart-date-ride').value;
+            var returnDate = "";
+            if (document.getElementById("return-date-ride").value) {
+                returnDate = document.getElementById("return-date-ride");
+            }
+            const {
+                currentUser
+            } = firebase.auth();
+            firebase.database().ref(`/users/${currentUser.uid}/rideInfo`)
+                .set({
+                    origin, destination, departDate, returnDate
+                }, () => window.location.href = "rides.html");
 
+            event.preventDefault();
+        }
+        const createRideForm = document.getElementById("driver-form");
+        createRideForm.addEventListener("submit", createRide, true);
+        const searchRideForm = document.getElementById("rider-form");
+        searchRideForm.addEventListener("submit", searchRide, true);
     </script>
-
-  </div>
 </body>
 
 </html>

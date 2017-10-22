@@ -2,209 +2,213 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="A rideshare web service for college students.">
-  <meta name="author" content="Sai Atmakuri and Tanish Ambulkar">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A rideshare web service for college students.">
+    <meta name="author" content="Sai Atmakuri and Tanish Ambulkar">
 
-  <title>Coast</title>
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom fonts for this template -->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <!-- Custom styles for this template -->
-  <link href="css/grayscale.min.css" rel="stylesheet">
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyBNaYCjRpVElS6trBdVw_aMoAk8TuKrABc",
-      authDomain: "skrrt-5acd5.firebaseapp.com",
-      databaseURL: "https://skrrt-5acd5.firebaseio.com",
-      projectId: "skrrt-5acd5",
-      storageBucket: "skrrt-5acd5.appspot.com",
-      messagingSenderId: "416128707790"
-    };
-    firebase.initializeApp(config);
-  </script>
+    <title>Coast</title>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template -->
+    <link href="css/grayscale.min.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBNaYCjRpVElS6trBdVw_aMoAk8TuKrABc",
+            authDomain: "skrrt-5acd5.firebaseapp.com",
+            databaseURL: "https://skrrt-5acd5.firebaseio.com",
+            projectId: "skrrt-5acd5",
+            storageBucket: "skrrt-5acd5.appspot.com",
+            messagingSenderId: "416128707790"
+        };
+        firebase.initializeApp(config);
+    </script>
 </head>
 
 <body id="page-top">
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Coast</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fa fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#register">Sign-Up</a>
-          </li>
-          <li class="nav-item" id="menu-item-login">
-            <a class="nav-link" href="login.html">Log-In</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Intro Header -->
-  <header class="masthead">
-    <div class="intro-body">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h1 class="brand-heading">Coast</h1>
-            <p class="intro-text">A rideshare web service for college students.</p>
-            <a href="#about" class="btn btn-circle js-scroll-trigger">
-              <i class="fa fa-angle-double-down animated"></i>
-            </a>
-          </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">Coast</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#register">Sign-Up</a>
+                    </li>
+                    <li class="nav-item" id="menu-item-login">
+                        <a class="nav-link" href="login.html">Log-In</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-    </div>
-  </header>
+    </nav>
 
-  <!-- About Section -->
-  <section id="about" class="text-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 mx-auto">
-          <h1>About Coast</h1>
-          <h5>This some filler text.</h5>
-          <div class="row">
-            <div class="col-md-4 about_icon">
-                <i class="fa fa-car fa-inverse"></i>
-                <h2>Ride</h2>
-                <p>This some filler text. This some filler text. This some filler text.</p>
-            </div>
-            <div class="col-md-4 about_icon">
-                <i class="fa fa-building fa-inverse"></i>
-                <h2>Bollege</h2>
-                <p>This some filler text. This some filler text. This some filler text.</p>
-            </div>
-            <div class="col-md-4 about_icon">
-                <i class="fa fa-usd fa-inverse"></i>
-                <h2>Make Money</h2>
-                <p>This some filler text. This some filler text. This some filler text.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Register Section -->
-  <section id="register" class="text-center">
-    <div class="container">
-      <div class="col-lg-12 mx-auto">
-        <h1>Sign-Up</h1>
-        <div id="messageForm">
-          <form class="col-md-10 mx-auto" id="registerForm">
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <input type="text" class="form-control form-control-lg" id="firstname" placeholder="First Name" required>
-              </div>
-              <div class="form-group col-md-6">
-                <input type="text" class="form-control form-control-lg" id="lastname" placeholder="Last Name" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="email" class="form-control form-control-lg" id="email" placeholder="Email (Use @college.edu email)" required>
-            </div>
-            <div class="form-row">
-              <div class="form-group form-row col-md-6" style="margin-right: 5px;">
-                <label class="col-lg-1 col-form-label col-form-label-lg" for="phoneLabel">+1</label>
-                <div class="col-lg-11">
-                  <input type="text" class="form-control form-control-lg" id="phoneNo" maxlength="10" placeholder="Mobile Phone #" required>
+    <!-- Intro Header -->
+    <header class="masthead">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h1 class="brand-heading">Coast</h1>
+                        <p class="intro-text">A rideshare web service for college students.</p>
+                        <a href="#about" class="btn btn-circle js-scroll-trigger">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
                 </div>
-              </div>
-              <div class="form-group col-md-6">
-                <select class="form-control form-control-lg" id="school" required>
-                  <option value="">Select School...</option>
-                  <option value="UCB">UC Berkeley</option>
-                  <option value="UCD">UC Davis</option>
-                  <option value="UCI">UC Irvine</option>
-                  <option value="UCLA">UC Los Angeles</option>
-                  <option value="UCM">UC Merced</option>
-                  <option value="UCR">UC Riverside</option>
-                  <option value="UCSD">UC San Diego</option>
-                  <option value="UCSB">UC Santa Barbara</option>
-                  <option value="UCSC">UC Santa Cruz</option>
-                </select>
-                <div class="invalid-feedback">
-                  Please select a school.
-                </div>
-              </div>
             </div>
-            <div class="form-group">
-              <input type="password" class="form-control form-control-lg" id="password1" placeholder="Create a Password" required>
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control form-control-lg" id="password2" placeholder="Confirm Password" required>
-            </div>
-            <button class="hover btn btn-primary btn-lg" id="submit-button">Create Account</button>
-          </form>
         </div>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container text-center">
-      <p>Copyright &copy; Coast 2017</p>
-    </div>
-  </footer>
+    <!-- About Section -->
+    <section id="about" class="content-section text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mx-auto">
+                    <h1>About Coast</h1>
+                    <h5>This some filler text.</h5>
+                    <div class="row">
+                        <div class="col-md-4 about_icon">
+                            <i class="fa fa-car fa-inverse"></i>
+                            <h2>Ride</h2>
+                            <p>This some filler text. This some filler text. This some filler text.</p>
+                        </div>
+                        <div class="col-md-4 about_icon">
+                            <i class="fa fa-building fa-inverse"></i>
+                            <h2>Bollege</h2>
+                            <p>This some filler text. This some filler text. This some filler text.</p>
+                        </div>
+                        <div class="col-md-4 about_icon">
+                            <i class="fa fa-usd fa-inverse"></i>
+                            <h2>Make Money</h2>
+                            <p>This some filler text. This some filler text. This some filler text.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Register Section -->
+    <section id="register" class="content-section text-center">
+        <div class="container">
+            <div class="col-lg-12 mx-auto">
+                <h1>Sign-Up</h1>
+                <div id="messageForm">
+                    <form class="col-md-10 mx-auto" id="registerForm">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control form-control-lg" id="firstname" placeholder="First Name" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control form-control-lg" id="lastname" placeholder="Last Name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control form-control-lg" id="email" placeholder="Email (Use @college.edu email)" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group form-row col-md-6" style="margin-right: 5px;">
+                                <label class="col-lg-1 col-form-label col-form-label-lg" for="phoneLabel">+1</label>
+                                <div class="col-lg-11">
+                                    <input type="text" class="form-control form-control-lg" id="phoneNo" maxlength="10" placeholder="Mobile Phone #" required>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <select class="form-control form-control-lg" id="school" required>
+                                    <option value="">Select School...</option>
+                                    <option value="UCB">UC Berkeley</option>
+                                    <option value="UCD">UC Davis</option>
+                                    <option value="UCI">UC Irvine</option>
+                                    <option value="UCLA">UC Los Angeles</option>
+                                    <option value="UCM">UC Merced</option>
+                                    <option value="UCR">UC Riverside</option>
+                                    <option value="UCSD">UC San Diego</option>
+                                    <option value="UCSB">UC Santa Barbara</option>
+                                    <option value="UCSC">UC Santa Cruz</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a school.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control form-control-lg" id="password1" placeholder="Create a Password" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control form-control-lg" id="password2" placeholder="Confirm Password" required>
+                        </div>
+                        <button class="hover btn btn-primary btn-lg" id="submit-button">Create Account</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Plugin JavaScript -->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>Copyright &copy; Your Website 2017</p>
+        </div>
+    </footer>
 
-  <!-- Custom scripts for this template -->
-  <script src="js/grayscale.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <script type="text/javascript">
-      function register(event){
-          const fname = document.getElementById("firstname").value;
-          const lname = document.getElementById("lastname").value;
-          const email = document.getElementById("email").value;
-          const phone = document.getElementById("phoneNo").value;
-          const school = document.getElementById("school").value;
-          const pass1 = document.getElementById("password1").value;
-          const pass2 = document.getElementById("password2").value;
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-          if(pass1 !== pass2){
-              alert("Passwords don't match");
-          }
+    <!-- Custom scripts for this template -->
+    <script src="js/grayscale.min.js"></script>
 
-          const promise = firebase.auth().createUserWithEmailAndPassword(email,pass1)
-             .then(() => {
-                 const promise2 = firebase.auth().signInWithEmailAndPassword(email,pass1)
-                   .then(() => {
-                     const currentUser = firebase.auth().currentUser.uid;
-                     console.log(currentUser);
-                     firebase.database().ref(`/users/${currentUser}`)
-                       .set({email, fname, lname, phone, school},()=>{window.location.href = "dashboard.html"});
-                     });
-                  promise2.catch(e => console.log(e.message));
-             });
-          promise.catch(e => console.log(e.message));
+    <script type="text/javascript">
+        function register(event) {
+            const fname = document.getElementById("firstname").value;
+            const lname = document.getElementById("lastname").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phoneNo").value;
+            const school = document.getElementById("school").value;
+            const pass1 = document.getElementById("password1").value;
+            const pass2 = document.getElementById("password2").value;
 
-          event.preventDefault();
-      }
-      var form = document.getElementById("registerForm");
-      form.addEventListener("submit",register, true);
-  </script>
+            if (pass1 !== pass2) {
+                alert("Passwords don't match");
+            }
+
+            const promise = firebase.auth().createUserWithEmailAndPassword(email, pass1)
+                .then(() => {
+                    const promise2 = firebase.auth().signInWithEmailAndPassword(email, pass1)
+                        .then(() => {
+                            const currentUser = firebase.auth().currentUser.uid;
+                            console.log(currentUser);
+                            firebase.database().ref(`/users/${currentUser}`)
+                                .set({
+                                    email, fname, lname, phone, school
+                                }, () => {
+                                    window.location.href = "dashboard.html"
+                                });
+                        });
+                    promise2.catch(e => console.log(e.message));
+                });
+            promise.catch(e => console.log(e.message));
+
+            event.preventDefault();
+        }
+        var form = document.getElementById("registerForm");
+        form.addEventListener("submit", register, true);
+    </script>
 
 </body>
 
