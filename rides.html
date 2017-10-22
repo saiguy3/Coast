@@ -104,8 +104,7 @@
                         $line.append($("<td></td>").html(rideDataObj[k].numSpots));
                         $line.append($("<td></td>").html(rideDataObj[k].price));
                         $line.append($("<td></td>").html(rideDataObj[k].comments));
-                        $line.append($("<td></td>").html("<button onClick=$.post('/2010-04-01/Accounts/{AccountSid}/Messages',{to:})>Reserve</button>"));
-
+                        $line.append($("<td></td>").html("<button onclick=\"alert('Ride has been requested');window.location.href='dashboard.html'\">Reserve</button>"));
                         $table.append($line);
 
                     }
