@@ -93,35 +93,23 @@
       <div class="col-lg-12 mx-auto">
         <h1>Sign-Up</h1>
         <div id="messageForm">
-          <form class="col-md-10 mx-auto" id="registerForm" novalidate>
+          <form class="col-md-10 mx-auto" id="registerForm">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <input type="text" class="form-control form-control-lg" id="firstname" placeholder="First Name" required>
-                <div class="invalid-feedback">
-                  Please provide a first name.
-                </div>
               </div>
               <div class="form-group col-md-6">
                 <input type="text" class="form-control form-control-lg" id="lastname" placeholder="Last Name" required>
-                <div class="invalid-feedback">
-                  Please provide a last name.
-                </div>
               </div>
             </div>
             <div class="form-group">
               <input type="email" class="form-control form-control-lg" id="email" placeholder="Email (Use @college.edu email)" required>
-              <div class="invalid-feedback">
-                Please provide a valid .edu email.
-              </div>
             </div>
             <div class="form-row">
               <div class="form-group form-row col-md-6" style="margin-right: 5px;">
                 <label class="col-lg-1 col-form-label col-form-label-lg" for="phoneLabel">+1</label>
                 <div class="col-lg-11">
                   <input type="text" class="form-control form-control-lg" id="phoneNo" maxlength="10" placeholder="Mobile Phone #" required>
-                  <div class="invalid-feedback">
-                    Please provide a valid phone number (XXXXXXXXX).
-                  </div>
                 </div>
               </div>
               <div class="form-group col-md-6">
@@ -147,9 +135,6 @@
             </div>
             <div class="form-group">
               <input type="password" class="form-control form-control-lg" id="password2" placeholder="Confirm Password" required>
-              <div class="invalid-feedback">
-                Please provide password values that match.
-              </div>
             </div>
             <button class="hover btn btn-primary btn-lg" id="submit-button">Create Account</button>
           </form>
@@ -209,7 +194,9 @@
                       .then(() => {
                         const { currentUser } = firebase.auth();
                         firebase.database().ref(`/users/${currentUser.uid}/personalInfo`)
-                          .push({email, fname, lname, phone, school})});
+                          .push({email, fname, lname, phone, school});
+                        location.replace("dashboard.html");
+                      });
                       promise2.catch(e => console.log(e.message));
 
                 });

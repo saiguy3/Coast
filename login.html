@@ -57,7 +57,10 @@
           console.log(user);
 
           const promise = firebase.auth().signInWithEmailAndPassword(user,pass)
-              .then((user) => console.log(user));
+              .then((user) => {
+                console.log(user);
+                location.replace("dashboard.html");
+              });
           promise.catch(e => console.log(e.message));
 
           event.preventDefault();
@@ -68,4 +71,3 @@
 </body>
 
 </html>
-
