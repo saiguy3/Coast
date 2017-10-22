@@ -18,16 +18,17 @@
   <!-- Bootstrap Date Picker -->
   <link href="http://code.gijgo.com/1.5.1/css/gijgo.css" rel="stylesheet" type="text/css" />
   <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-  <script type="text/javascript">
-      var config = {
-          apiKey: "AIzaSyBNaYCjRpVElS6trBdVw_aMoAk8TuKrABc",
-          authDomain: "skrrt-5acd5.firebaseapp.com",
-          databaseURL: "https://skrrt-5acd5.firebaseio.com",
-          projectId: "skrrt-5acd5",
-          storageBucket: "",
-          messagingSenderId: "416128707790"
-      };
-      firebase.initializeApp(config);
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBNaYCjRpVElS6trBdVw_aMoAk8TuKrABc",
+      authDomain: "skrrt-5acd5.firebaseapp.com",
+      databaseURL: "https://skrrt-5acd5.firebaseio.com",
+      projectId: "skrrt-5acd5",
+      storageBucket: "skrrt-5acd5.appspot.com",
+      messagingSenderId: "416128707790"
+    };
+    firebase.initializeApp(config);
   </script>
   <script type="text/javascript">
     firebase.auth().onAuthStateChanged(function(user) {
@@ -80,7 +81,7 @@
           <i class="fa fa-car"></i> Find a Ride
         </div>
         <div class="card-body">
-          <form class="col-md-12">
+          <form class="col-md-12" id="rider-form">
             <div class="form-row">
               <label class="col-lg-1 col-form-label col-form-label-lg" for="fromLabel">From: </label>
               <div class="form-group col-md-7">
@@ -238,9 +239,8 @@
 
         const currentUser = firebase.auth().currentUser.uid;
         console.log(currentUser);
-        firebase.database().ref("rides/")
-          .push({currentUser,origin,destination,departDate,returnDate,price,numSpots,comments})
-          .then(alert('Your ride has been posted'));
+        firebase.database().ref(`/rides/${currentUser}`)
+          .set({currentUser,origin,destination,departDate,returnDate,price,numSpots,comments},()=>alert('Your ride has been posted'));
         document.getElementById('driver-origin').value = null;
         document.getElementById('driver-destination').value = null;
         document.getElementById('depart-date-driver').value = null;
@@ -248,9 +248,28 @@
         document.getElementById('price').value = null;
         document.getElementById('numSpots').value = null;
         document.getElementById('comments').value = null;
+
+        event.preventDefault();
+      }
+      function searchRide(event){
+        console.log("inside searchRide");
+        const origin = document.getElementById('ride-origin').value;
+        const destination = document.getElementById('ride-destination').value;
+        const departDate = document.getElementById('depart-date-ride').value;
+        var returnDate="";
+        if (document.getElementById("return-date-ride").value){
+          returnDate = document.getElementById("return-date-ride");
+        }
+        const { currentUser } = firebase.auth();
+        firebase.database().ref(`/users/${currentUser.uid}/rideInfo`)
+          .set({origin,destination,departDate,returnDate},() => window.location.href = "rides.html");
+
+        event.preventDefault();
       }
       const createRideForm = document.getElementById("driver-form");
       createRideForm.addEventListener("submit",createRide,true);
+      const searchRideForm = document.getElementById("rider-form");
+      searchRideForm.addEventListener("submit",searchRide,true);
 
     </script>
 
