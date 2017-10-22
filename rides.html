@@ -90,6 +90,7 @@
                     $header.append($("<th></th>").html("Return Date"));
                     $header.append($("<th></th>").html("# Spots"));
                     $header.append($("<th></th>").html("Price"));
+                    $header.append($("<th></th>").html("Comments"));
                     $header.append($("<th></th>").html("Request"));
 
                     $table.append($header);
@@ -104,6 +105,7 @@
                         $line.append($("<td></td>").html(rideDataObj[k].returnDate));
                         $line.append($("<td></td>").html(rideDataObj[k].numSpots));
                         $line.append($("<td></td>").html(rideDataObj[k].price));
+                        $line.append($("<td></td>").html(rideDataObj[k].comments));
                         $line.append($("<td></td>").html("<button onClick=$.post('/2010-04-01/Accounts/{AccountSid}/Messages',{to:})>Reserve</button>"));
 
                         $table.append($line);
