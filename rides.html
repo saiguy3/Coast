@@ -14,6 +14,30 @@
   <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+  <script type="text/javascript">
+      var config = {
+          apiKey: "AIzaSyBNaYCjRpVElS6trBdVw_aMoAk8TuKrABc",
+          authDomain: "skrrt-5acd5.firebaseapp.com",
+          databaseURL: "https://skrrt-5acd5.firebaseio.com",
+          projectId: "skrrt-5acd5",
+          storageBucket: "",
+          messagingSenderId: "416128707790"
+      };
+      firebase.initializeApp(config);
+  </script>
+  <script type="text/javascript">
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+      }
+      else {
+        // No user is signed in.
+        location.replace("login.html");
+      }
+      });
+
+  </script>
 </head>
 
 <body class="fixed-nav bg-dark" id="page-top">
@@ -51,24 +75,70 @@
         <div class="card-header">
           <i class="fa fa-car"></i> Find a Ride
         </div>
-        <div class="card-body" style="height:auto;">
-          <table class="table table-bordered"></table>
-        </div>
+        <div id="table-data" class="card-body" style="height:auto;"></div>
       </div>
 
     <script>
-    // NAME FUNCTION TO CALL
-      function loadTable(event){
-        // FIX THE VARIABLE VALUE
-        var ref = firebase.database().ref().child('/users');
-        var table = document.getElementsByTagName('table')[0];
-        ref.on("child_added", function(child) {
-          var tr = document.createElement('tr');
-          var td = document.createElement('td');
-          td.innerText = child.val().email + " --- " + JSON.stringify(child.val());
-          tr.appendChild(td);
-          table.appendChild(tr);
-        });
+      var rideData = firebase.database().ref('rides');
+      rideData.on('value', gotData, errData);
+
+      function gotData(data){
+        const currentUser = firebase.auth().currentUser.uid;
+        rideDataObj = data.val();
+        console.log(rideDataObj);
+        var keys = Object.keys(rideDataObj);
+
+        var $table = $("<table class=\"table table-bordered\"></table>");
+        var $header = $("<tr></tr>");
+
+        $header.append($("<th></th>").html("Origin"));
+        $header.append($("<th></th>").html("Destination"));
+        $header.append($("<th></th>").html("Depart Date"));
+        $header.append($("<th></th>").html("Return Date"));
+        $header.append($("<th></th>").html("# Spots"));
+        $header.append($("<th></th>").html("Price"));
+        $header.append($("<th></th>").html("Request"));
+
+        $table.append($header);
+
+        for (var i=0; i<keys.length; i++){
+          var k = keys[i];
+
+          var $line = $("<tr></tr>");
+          $line.append($("<td></td>").html(rideDataObj[k].origin));
+          $line.append($("<td></td>").html(rideDataObj[k].destination));
+          $line.append($("<td></td>").html(rideDataObj[k].departDate));
+          $line.append($("<td></td>").html(rideDataObj[k].returnDate));
+          $line.append($("<td></td>").html(rideDataObj[k].numSpots));
+          $line.append($("<td></td>").html(rideDataObj[k].price));
+          $line.append($("<td></td>").html("<button onClick=$.post('/2010-04-01/Accounts/{AccountSid}/Messages',{to:})>Reserve</button>"));
+
+          $table.append($line);
+
+        }
+        $table.appendTo($("#table-data"));
+
+      }
+
+      function errData(err){
+        console.log(err);
+      }
+
+      function sendText(phone){
+        var http = new XMLHttpRequest();
+        var url = "/2010-04-01/Accounts/{AccountSid}/Messages";
+        var params = "lorem=ipsum&name=binny";
+        http.open("POST", url, true);
+
+        //Send the proper header information along with the request
+        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        http.onreadystatechange = function() {//Call a function when the state changes.
+            if(http.readyState == 4 && http.status == 200) {
+                alert(http.responseText);
+            }
+        }
+        http.send(params);
       }
     </script>
 
