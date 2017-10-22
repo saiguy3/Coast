@@ -2,154 +2,147 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="A rideshare web service for college students.">
-  <meta name="author" content="Sai Atmakuri and Tanish Ambulkar">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A rideshare web service for college students.">
+    <meta name="author" content="Sai Atmakuri and Tanish Ambulkar">
 
-  <title>Coast</title>
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom fonts for this template -->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-  <script type="text/javascript">
-      var config = {
-          apiKey: "AIzaSyBNaYCjRpVElS6trBdVw_aMoAk8TuKrABc",
-          authDomain: "skrrt-5acd5.firebaseapp.com",
-          databaseURL: "https://skrrt-5acd5.firebaseio.com",
-          projectId: "skrrt-5acd5",
-          storageBucket: "",
-          messagingSenderId: "416128707790"
-      };
-      firebase.initializeApp(config);
-  </script>
-  <script type="text/javascript">
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        // User is signed in.
-      }
-      else {
-        // No user is signed in.
-        location.replace("login.html");
-      }
-      });
-
-  </script>
+    <title>Coast</title>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBNaYCjRpVElS6trBdVw_aMoAk8TuKrABc",
+            authDomain: "skrrt-5acd5.firebaseapp.com",
+            databaseURL: "https://skrrt-5acd5.firebaseio.com",
+            projectId: "skrrt-5acd5",
+            storageBucket: "skrrt-5acd5.appspot.com",
+            messagingSenderId: "416128707790"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script type="text/javascript">
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) { /* User is signed in. */ } else {
+                // No user is signed in.
+                location.replace("login.html");
+            }
+        });
+    </script>
 </head>
 
 <body class="fixed-nav bg-dark" id="page-top">
-  <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="dashboard.html">Coast</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item" data-placement="right" title="Home">
-          <a class="nav-link" href="dashboard.html">
-            <i class="fa fa-fw fa-home"></i>
-            <span class="nav-link-text">Home</span>
-          </a>
-        </li>
-        <li class="nav-item" data-placement="right" title="Messages">
-          <a class="nav-link" href="messages.html" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-comments"></i>
-            <span class="nav-link-text">Messages</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-  <div class="container">
-    <div class="container-fluid">
-      <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-car"></i> Find a Ride
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">Coast</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="dashboard.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="messages.html">Messages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:firebase.auth().signOut();location.replace('index.html');">Logout</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div id="table-data" class="card-body" style="height:auto;"></div>
-      </div>
+    </nav>
 
-    <script>
-      var rideData = firebase.database().ref('rides');
-      rideData.on('value', gotData, errData);
+    <div class="container">
+        <div class="container-fluid">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fa fa-car"></i> Find a Ride
+                </div>
+                <div id="table-data" class="card-body" style="height:auto;"></div>
+            </div>
 
-      function gotData(data){
-        const currentUser = firebase.auth().currentUser.uid;
-        rideDataObj = data.val();
-        console.log(rideDataObj);
-        var keys = Object.keys(rideDataObj);
+            <script>
+                var rideData = firebase.database().ref('rides');
+                rideData.on('value', gotData, errData);
 
-        var $table = $("<table class=\"table table-bordered\"></table>");
-        var $header = $("<tr></tr>");
+                function gotData(data) {
+                    const currentUser = firebase.auth().currentUser.uid;
+                    rideDataObj = data.val();
+                    console.log(rideDataObj);
+                    var keys = Object.keys(rideDataObj);
 
-        $header.append($("<th></th>").html("Origin"));
-        $header.append($("<th></th>").html("Destination"));
-        $header.append($("<th></th>").html("Depart Date"));
-        $header.append($("<th></th>").html("Return Date"));
-        $header.append($("<th></th>").html("# Spots"));
-        $header.append($("<th></th>").html("Price"));
-        $header.append($("<th></th>").html("Request"));
+                    var $table = $("<table class=\"table table-bordered\"></table>");
+                    var $header = $("<tr></tr>");
 
-        $table.append($header);
+                    $header.append($("<th></th>").html("Origin"));
+                    $header.append($("<th></th>").html("Destination"));
+                    $header.append($("<th></th>").html("Depart Date"));
+                    $header.append($("<th></th>").html("Return Date"));
+                    $header.append($("<th></th>").html("# Spots"));
+                    $header.append($("<th></th>").html("Price"));
+                    $header.append($("<th></th>").html("Request"));
 
-        for (var i=0; i<keys.length; i++){
-          var k = keys[i];
+                    $table.append($header);
 
-          var $line = $("<tr></tr>");
-          $line.append($("<td></td>").html(rideDataObj[k].origin));
-          $line.append($("<td></td>").html(rideDataObj[k].destination));
-          $line.append($("<td></td>").html(rideDataObj[k].departDate));
-          $line.append($("<td></td>").html(rideDataObj[k].returnDate));
-          $line.append($("<td></td>").html(rideDataObj[k].numSpots));
-          $line.append($("<td></td>").html(rideDataObj[k].price));
-          $line.append($("<td></td>").html("<button onClick=$.post('/2010-04-01/Accounts/{AccountSid}/Messages',{to:})>Reserve</button>"));
+                    for (var i = 0; i < keys.length; i++) {
+                        var k = keys[i];
 
-          $table.append($line);
+                        var $line = $("<tr></tr>");
+                        $line.append($("<td></td>").html(rideDataObj[k].origin));
+                        $line.append($("<td></td>").html(rideDataObj[k].destination));
+                        $line.append($("<td></td>").html(rideDataObj[k].departDate));
+                        $line.append($("<td></td>").html(rideDataObj[k].returnDate));
+                        $line.append($("<td></td>").html(rideDataObj[k].numSpots));
+                        $line.append($("<td></td>").html(rideDataObj[k].price));
+                        $line.append($("<td></td>").html("<button onClick=$.post('/2010-04-01/Accounts/{AccountSid}/Messages',{to:})>Reserve</button>"));
 
-        }
-        $table.appendTo($("#table-data"));
+                        $table.append($line);
 
-      }
+                    }
+                    $table.appendTo($("#table-data"));
 
-      function errData(err){
-        console.log(err);
-      }
+                }
 
-      function sendText(phone){
-        var http = new XMLHttpRequest();
-        var url = "/2010-04-01/Accounts/{AccountSid}/Messages";
-        var params = "lorem=ipsum&name=binny";
-        http.open("POST", url, true);
+                function errData(err) {
+                    console.log(err);
+                }
 
-        //Send the proper header information along with the request
-        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                function sendText(phone) {
+                    var http = new XMLHttpRequest();
+                    var url = "/2010-04-01/Accounts/{AccountSid}/Messages";
+                    var params = "lorem=ipsum&name=binny";
+                    http.open("POST", url, true);
 
-        http.onreadystatechange = function() {//Call a function when the state changes.
-            if(http.readyState == 4 && http.status == 200) {
-                alert(http.responseText);
-            }
-        }
-        http.send(params);
-      }
-    </script>
+                    //Send the proper header information along with the request
+                    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
-  </div>
+                    http.onreadystatechange = function() { //Call a function when the state changes.
+                        if (http.readyState == 4 && http.status == 200) {
+                            alert(http.responseText);
+                        }
+                    }
+                    http.send(params);
+                }
+            </script>
+
+            <!-- Bootstrap core JavaScript-->
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- Core plugin JavaScript-->
+            <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+            <!-- Custom scripts for all pages-->
+            <script src="js/sb-admin.min.js"></script>
+        </div>
 </body>
 
 </html>
