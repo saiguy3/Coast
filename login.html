@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>LoginForm</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/grayscale.min.css" rel="stylesheet">
+  <link href="css/loginForm.css" rel="stylesheet">
+
+  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+  <script type="text/javascript">
+      var config = {
+          apiKey: "AIzaSyBNaYCjRpVElS6trBdVw_aMoAk8TuKrABc",
+          authDomain: "skrrt-5acd5.firebaseapp.com",
+          databaseURL: "https://skrrt-5acd5.firebaseio.com",
+          projectId: "skrrt-5acd5",
+          storageBucket: "",
+          messagingSenderId: "416128707790"
+      };
+      firebase.initializeApp(config);
+  </script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="col-md-12">
+      <form name="login" class="d-flex justify-content-center" id="loginForm">
+        <div class="flex-column">
+          <input type="text" class="form-control" placeholder="Enter Username" name="username" required>
+          <input type="password" class="form-control" placeholder="Enter Password" name="password" required>
+          <button class="btn btn-primary" id="loginButton">Login</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <script>
+      function login(event){
+          const user = document.getElementsByName("username")[0].value;
+          const pass = document.getElementsByName("password")[0].value;
+          console.log(pass);
+          console.log(user);
+
+          const promise = firebase.auth().signInWithEmailAndPassword(user,pass)
+              .then((user) => console.log(user));
+          promise.catch(e => console.log(e.message));
+
+          event.preventDefault();
+      }
+      var form = document.getElementById("loginForm");
+      form.addEventListener("submit",login, true);
+  </script>
+</body>
+
+</html>
+
